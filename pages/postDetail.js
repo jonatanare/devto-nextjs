@@ -3,8 +3,6 @@ import Layout from '../components/Layout'
 import Detail from '../components/PostDetail'
 import date from 'date-and-time'
 
-
-
 export default function PostDetail ({}) {
   const post = {
     author: 'cin',

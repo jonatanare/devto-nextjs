@@ -17,7 +17,7 @@ export default function Detail ({ post }) {
     amount: 32
   },
   {
-    icon: '/assets/icons/dots.svg',
+    icon: '/assets/icons/dots.svg'
   }
   ]
   return (

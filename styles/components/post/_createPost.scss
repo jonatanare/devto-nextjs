@@ -109,9 +109,15 @@
 textarea{
     resize: none;
 }
-
+.tools{
+    flex-wrap: wrap;
+}
 .crayons-icon {
     border-radius: 3px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    flex-wrap:initial;
 
     &:hover {
         background-color: rgba(59, 73, 223, .1);

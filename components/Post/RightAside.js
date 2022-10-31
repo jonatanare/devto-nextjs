@@ -19,6 +19,7 @@ export const RightAside = () => {
   const RightAsideCard = ({ title, tags }) => {
     return (
       <>
+      <div>
         <a class='text-decoration-none  listing__card' href='#'>
           <div class='p-3 nav-tabs'>
             <p class='listing__text mb-1 listing__card'>{title}</p>
@@ -31,6 +32,7 @@ export const RightAside = () => {
             </ul>
           </div>
         </a>
+        </div>
       </>
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import date from 'date-and-time'
 import Link from 'next/link'
-import {TagTopics} from './Post/Tagtopics'
+import { TagTopics } from './Post/Tagtopics'
 
 export const HomePosts = ({ post }) => {
   return (
