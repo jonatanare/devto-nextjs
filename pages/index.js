@@ -17,7 +17,7 @@ export default function Home() {
                        
                     </div> --> */}
 
-              <ul className="navbar-nav mb- mx-0">
+              <ul className="navbar-nav mx-0">
                 <li className="nav-item">
                   <a className="nav-link" href="#">
                     <span>

@@ -1,0 +1,33 @@
+[
+    {
+        "text": "Home",
+        "icon": "./assets/icons/icon-home.svg",
+        "iconAlt": "Icon home",
+        "iconLink": "/home"
+    },
+    {
+        "text": "Reading List",
+        "icon": "./assets/icons/icon-reading.svg",
+        "iconAlt": "Icon reading",
+        "iconLink": "/"
+    },
+    {
+        "text": "Listings",
+        "icon": "./assets/icons/icon-letter.svg",
+        "iconAlt": "Icon listings",
+        "iconLink": "/"
+    },
+    {
+        "text": "Podcasts",
+        "icon": "./assets/icons/icon-podcasts.svg",
+        "iconAlt": "Icon podcasts",
+        "iconLink": "/"
+    },
+    {
+        "text": "Videos",
+        "icon": "./assets/icons/icon-video.svg",
+        "iconAlt": "Icon videos",
+        "iconLink": "/"
+    }
+    
+]
