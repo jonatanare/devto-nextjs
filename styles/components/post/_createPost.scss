@@ -1,0 +1,135 @@
+.crePost {
+    background-color: #f5f5f5;
+
+    &__container {
+        //max-width: 90%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: none;
+
+        &--text {
+            height: 380px;
+            border-bottom: 1px solid #d2d2d2;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-top: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    }
+
+    &__card {
+        //width: 90%;
+        margin: auto;
+
+
+    }
+
+    &__letters {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    &__btnAdd {
+        border-color: rgb(214, 214, 215);
+        background-color: white;
+        border-radius: 6px;
+        font-size: 14px;
+        padding: 6px, 14px, 14px, 6px;
+        width: 150px;
+        height: 40px;
+        font-weight: 500;
+        letter-spacing: .3px;
+        color: rgb(61, 61, 61);
+    }
+
+    &__input {
+        color: rgb(82, 82, 82);
+        font-size: 48px;
+        font-weight: 800;
+        height: 62px;
+        line-height: 60px;
+        height: 80px;
+
+        &::placeholder {
+            color: rgb(82, 82, 82);
+            font-size: 48px;
+            font-weight: 800;
+            height: 62px;
+            line-height: 60px;
+        }
+
+        &:focus {
+            background-color: white;
+            border-color: white;
+            box-shadow: none;
+        }
+    }
+
+    &__label {
+        font-size: 1px;
+        font-weight: 400;
+        color: rgba(117, 117, 117, 1);
+
+    }
+
+    &__components {
+        background-color: rgba(249, 249, 249, 1);
+        margin: auto;
+        border: none;
+    }
+
+    &__component {
+        //margin: auto;
+        //width: 90%;
+        height: auto;
+        background-color: rgba(249, 249, 249, 1);
+        height: 40px;
+        border-left: 1px solid #d2d2d2;
+        border-right: 1px solid #d2d2d2;
+
+    }
+
+    &__inputtext {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 16px;
+        height: 200px;
+        margin-top: 25px;
+        margin-left: 40px;
+
+        &:focus {
+            background-color: white;
+            border-color: white;
+            box-shadow: none;
+        }
+
+    }
+}
+
+textarea{
+    resize: none;
+}
+
+.crayons-icon {
+    border-radius: 3px;
+
+    &:hover {
+        background-color: rgba(59, 73, 223, .1);
+        cursor: pointer;
+        background-size: auto;
+    }
+
+    ;
+}
+
+.btn-publish {
+    border-radius: 5px;
+    background-color: rgba(47, 58, 178);
+    color: white;
+    margin-bottom: 40px;
+
+    &:hover {
+        background-color: rgba(59, 73, 223, 1);
+
+    }
+}
