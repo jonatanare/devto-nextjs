@@ -1,0 +1,291 @@
+
+
+.row>* {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+body {
+  font-family: -apple-system, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #f5f5f5;
+}
+
+.menu-main {
+  .current {
+    font-weight: bolder;
+  }
+  &__btn {
+    border: none;
+    &:hover {
+      background: white;
+      color: rgba(59, 73, 223, 1);
+    }
+  }
+}
+p.name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+label.date {
+  margin-top: -1rem;
+  font-size: 12px;
+  color: #6c757d;
+  margin-top: -5px;
+}
+
+.article {
+  font-size: 12px;
+  &__title {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 25px;
+    &--ppal{
+      font-size: 30px;
+    }
+  }
+  &__link {
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+  }
+  &__autor {
+    width: 32px;
+    height: 32px;
+  }
+  &__btn {
+    font-size: 14px;
+    &--programming {
+      &:hover {
+        background-color: rgba(137, 6, 6, 0.1);
+        border-color: #890606;
+      }
+      span {
+        color: #890606;
+      }
+    }
+    &--design {
+      &:hover {
+        background-color: rgba(6, 255, 106, 0.1);
+        border-color: #06ff6a;
+      }
+      span {
+        color: #06ff6a;
+      }
+    }
+    &--beginners {
+      &:hover {
+        background-color: rgba(0, 131, 53, 0.1);
+        border-color: #008335;
+      }
+      span {
+        color: #008335;
+      }
+    }
+    &--productivity {
+      &:hover {
+        background-color: rgba(42, 7, 152, 0.1);
+        border-color: #2a0798;
+      }
+      span {
+        color: #2a0798;
+      }
+    }
+    &--showdev {
+      &:hover {
+        background-color: rgba(9, 27, 71, 0.1);
+        border-color: #091b47;
+      }
+      span {
+        color: #091b47;
+      }
+    }
+    &--sideprojects {
+      &:hover {
+        background-color: rgba(59, 73, 223, 0.1);
+        border-color: #3b49df;
+      }
+      span {
+        color: #3b49df;
+      }
+    }
+    &--watercooler {
+      &:hover {
+        background-color: rgba(208, 236, 255, 0.1);
+        border-color: #d0ecff;
+      }
+      span {
+        color: #d0ecff;
+      }
+    }
+    &--save {
+      background-color: #d6d6d7;
+      border: none;
+      &:hover {
+        background-color: #bdbdbd;
+      }
+    }
+    &--watercooler {
+      &:hover {
+        background-color: rgba(208, 236, 255, 0.1);
+        border-color: #d0ecff;
+      }
+      span {
+        color: #d0ecff;
+      }
+    }
+    &--discuss {
+      &:hover {
+        background-color: rgba(26, 214, 67, 0.10);
+        border-color: #1ad643;
+      }
+      span {
+        color: #1ad643;
+      }
+    }
+    &--ux {
+      &:hover {
+        background-color: rgba(0, 101, 179, 0.10);
+        border-color: #0065B3;
+      }
+      span {
+        color: #0065B3;
+      }
+    }
+    &--css {
+      &:hover {
+        background-color: rgba(41, 101, 241, 0.10);
+        border-color: #2965F1;
+      }
+      span {
+        color: #2965F1;
+      }
+    }
+    &--computerscience {
+      &:hover {
+        background-color: rgba(217, 140, 217, 0.10);
+        border-color:#d98cd9;
+      }
+      span {
+        color: #d98cd9;
+      }
+    }
+    &--kubernetes {
+      &:hover {
+        background-color: rgba(50, 109, 230, 0.10);
+        border-color:#326de6;
+      }
+      span {
+        color: #326de6;
+      }
+    }
+    &--webdev {
+      &:hover {
+        background-color: rgba(86, 39, 101, 0.10);
+        border-color:#562765;
+      }
+      span {
+        color: #562765;
+      }
+    }
+    &--flutter {
+      &:hover {
+        background-color: rgba(86, 197, 246, 0.10);
+        border-color:#56C5F6;
+      }
+      span {
+        color: #56C5F6;
+      }
+    }
+    &--android {
+      &:hover {
+        background-color: rgba(86, 160, 54, 0.10);
+        border-color:#56a036;
+      }
+      span {
+        color: #56a036;
+      }
+    }
+    &--programming {
+      &:hover {
+        background-color: rgba(137, 6, 6, 0.10);
+        border-color:#890606;
+      }
+      span {
+        color: #890606;
+      }
+    }
+      
+  }
+  &__down {
+    border: none;
+    font-size: 14px;
+    &:hover {
+      background-color: rgb(0, 0, 0, 0.035);
+      border: none;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .identation {
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+  }
+}
+
+.card__hover{
+  display: relative;
+  color:rgb(82,82,82,1);
+  border-top: 2rem solid rgb(59, 73, 223);
+  width: max-content;
+  max-width: 100%;
+  height: auto;
+  min-height: 300px;
+  padding: 20px;
+  &--img{
+    border-radius: 100%;
+    width: 50px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  &--title{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+  &--containerimage{
+    margin-top: -35px;
+  }
+  &--key{
+    font-weight: 700;
+  }
+  &--value{
+    margin-bottom: 8px;
+  }
+  li{
+    display: grid;
+  }
+  ul{
+    padding-left: 0;
+  }
+
+}
+
+.btn__login{
+  border: none;
+  &:hover{
+    background-color:rgba(59, 73, 223,.1) ;
+    color:rgba(47,58,178,1);
+
+  }
+}
+
+.btn__account{
+  font-weight: 500;
+}
+
+main{
+  margin-top: 70px;
+}
