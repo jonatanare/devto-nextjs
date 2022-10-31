@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import {HomePosts} from '../components/HomePost'
+import { HomePosts } from '../components/HomePost'
 import Layout from '../components/Layout'
 import date from 'date-and-time'
 
