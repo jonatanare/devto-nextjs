@@ -1,32 +1,80 @@
 [
     {
         "text": "Home",
-        "icon": "./assets/icons/icon-home.svg",
+        "icon": "/assets/icons/icon-home.svg",
         "iconAlt": "Icon home",
         "iconLink": "/home"
     },
     {
         "text": "Reading List",
-        "icon": "./assets/icons/icon-reading.svg",
+        "icon": "/assets/icons/icon-reading.svg",
         "iconAlt": "Icon reading",
         "iconLink": "/"
     },
     {
         "text": "Listings",
-        "icon": "./assets/icons/icon-letter.svg",
+        "icon": "/assets/icons/icon-letter.svg",
         "iconAlt": "Icon listings",
         "iconLink": "/"
     },
     {
         "text": "Podcasts",
-        "icon": "./assets/icons/icon-podcasts.svg",
+        "icon": "/assets/icons/icon-podcasts.svg",
         "iconAlt": "Icon podcasts",
         "iconLink": "/"
     },
     {
         "text": "Videos",
-        "icon": "./assets/icons/icon-video.svg",
+        "icon": "/assets/icons/icon-video.svg",
         "iconAlt": "Icon videos",
+        "iconLink": "/"
+    },
+    {
+        "text": "Tags",
+        "icon": "/assets/icons/icon-tags.svg",
+        "iconAlt": "Icon tags",
+        "iconLink": "/"
+    },
+    {
+        "text": "FAQ",
+        "icon": "/assets/icons/icon-faq.svg",
+        "iconAlt": "Icon faq",
+        "iconLink": "/"
+    },
+    {
+        "text": "Forem Shop",
+        "icon": "/assets/icons/icon-forem-shop.svg",
+        "iconAlt": "Icon forem shop",
+        "iconLink": "/"
+    },
+    {
+        "text": "Sponsors",
+        "icon": "/assets/icons/icon-sponsors.svg",
+        "iconAlt": "Icon sponsors",
+        "iconLink": "/"
+    },
+    {
+        "text": "About",
+        "icon": "/assets/icons/icon-about.svg",
+        "iconAlt": "Icon about",
+        "iconLink": "/"
+    },
+    {
+        "text": "Contact",
+        "icon": "/assets/icons/icon-contact.svg",
+        "iconAlt": "Icon contact",
+        "iconLink": "/"
+    },
+    {
+        "text": "Guides",
+        "icon": "/assets/icons/icon-guies.svg",
+        "iconAlt": "Icon guides",
+        "iconLink": "/"
+    },
+    {
+        "text": "Software comparisons",
+        "icon": "/assets/icons/icon-software-comparisons.svg",
+        "iconAlt": "Icon software comparisons",
         "iconLink": "/"
     }
     
