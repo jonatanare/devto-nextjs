@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -8,7 +9,7 @@ export default function Nav () {
         className='navbar-light fixed-top header-static bg-white shadow-sm'
         id='header'
       >
-        <nav className='navbar navbar-expand-lg'>
+        <nav className='navbar navbar-expand-lg navbar-devto'>
           <div className='container p-md-0'>
             <div className='d-flex ml-2'>
               <button
@@ -22,9 +23,7 @@ export default function Nav () {
               </button>
 
               <Link className='navbar-brand' href='/'>
-                <img
-                  src='/assets/logos/logo-devto.png'
-                />
+                <Image src={'/assets/logos/logo-devto.png'} alt={'Logo devto'} layout={'fill'} width={50} height={40} />
               </Link>
               <form className='form-inline my-2 my-lg-0 d-none d-md-block form-search'>
                 <div className='wrapper-search position-relative'>
@@ -59,13 +58,15 @@ export default function Nav () {
                 className='btn btn__login btn-outline-primary m-auto me-1 d-none d-md-flex'
                 id='btn-login'
               >
-                <a href='./login.html'> Log in</a>
+                <Link href={'/enter'}>
+                  Log In
+                </Link>
               </button>
               <button
                 className='btn btn__account btn-outline-primary m-auto me-1'
                 id='btn-create'
               >
-                <a href='./createAccount.html'> Create Account</a>
+                <Link href='/register'> Create Account</Link>
               </button>
 
               <button

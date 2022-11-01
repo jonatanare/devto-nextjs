@@ -1,6 +1,8 @@
 @use '../abstract/mixins';
 @use '../abstract/variables';
-
+.navbar-devto{
+    height: 64px;
+}
 .btn-outline-primary{
     color: variables.$color-primary;
     border-color: variables.$color-primary;
