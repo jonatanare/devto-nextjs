@@ -1,0 +1,20 @@
+[
+    {
+        "text": "Code of Conduct",
+        "icon": "/assets/icons/icon-code-conduct.svg",
+        "iconAlt": "Icon code conduct",
+        "iconLink": "/"
+    },
+    {
+        "text": "Privacy Policy",
+        "icon": "/assets/icons/icon-privacy-policy.svg",
+        "iconAlt": "Icon privacy policy",
+        "iconLink": "/"
+    },
+    {
+        "text": "Terms of use",
+        "icon": "/assets/icons/icon-terms-use.svg",
+        "iconAlt": "Icon privacy policy",
+        "iconLink": "/"
+    }
+]

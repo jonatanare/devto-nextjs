@@ -1,0 +1,27 @@
+[
+    {
+        "icon": "/assets/icons/icon-twitter.svg",
+        "iconAlt": "Icon twitter",
+        "iconLink": "/"
+    },
+    {
+        "icon": "/assets/icons/icon-facebook.svg",
+        "iconAlt": "Icon facebook",
+        "iconLink": "/"
+    },
+    {
+        "icon": "/assets/icons/icon-github.svg",
+        "iconAlt": "Icon github",
+        "iconLink": "/"
+    },
+    {
+        "icon": "/assets/icons/icon-instagram.svg",
+        "iconAlt": "Icon instagram",
+        "iconLink": "/" 
+    },
+    {
+        "icon": "/assets/icons/icon-twitch.svg",
+        "iconAlt": "Icon twitch",
+        "iconLink": "/"
+    }
+]

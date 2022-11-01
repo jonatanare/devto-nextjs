@@ -105,7 +105,7 @@ export default function Nav () {
           <section
             role='navigation '
             className='offcanvas offcanvas-start d-lg-none'
-            tabindex='-1'
+            tabIndex='-1'
             id='offcanvasExample'
             aria-labelledby='offcanvasExampleLabel'
           >
