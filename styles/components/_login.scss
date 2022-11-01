@@ -1,0 +1,102 @@
+.login {
+    margin-top: 80px;
+
+    &__title {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 37.5px;
+        text-size-adjust: 100%;
+        margin-bottom: 0;
+    }
+
+    &__text {
+        font-size: 16px;
+    }
+
+    &__anounce {
+        font-size: 14px;
+
+        &::after {
+            border: 1px solid var(--base-20);
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            border-radius: var(--radius);
+        }
+    }
+
+    &__form {
+        width: 90%;
+    }
+
+    &__email {
+        font-size: 16px;
+        font-weight: 500;
+
+    }
+
+}
+
+.btn__icon {
+    fill: white;
+    margin-bottom: 5px;
+    margin-right: 5px;
+
+
+    &--forem {
+        background-color: 0a3e4a;
+        color: white;
+        fill: currentColor;
+    }
+}
+
+.btn__continue {
+    background-color: rgba(59, 73, 223, 1);
+    font-weight: 500;
+    height: 48px;
+
+    &:hover {
+        background-color: rgba(47, 58, 178, 1);
+    }
+}
+
+
+.btn__apps {
+    width: 90%;
+    margin: auto;
+    display: block;
+    color: white;
+    border-radius: 6px;
+    height: 48px;
+    line-height: 24px;
+    font-size: 16px;
+    border-style: none;
+    padding: 12px, 20px, 12px, 12px;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: 100%;
+
+    &--apple {
+        background-color: #1b1b1b;
+
+        &:hover {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            background-color: #1b1b1b;
+            color: white;
+        }
+    }
+
+    &--forem {
+        background-color: #0a3e4a;
+    }
+
+    &--github {
+        background-color: #24292e;
+    }
+
+    &--twitter {
+        background-color: #0096f2;
+    }
+}
