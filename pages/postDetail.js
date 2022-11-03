@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import { SideNavBar } from "../components/Post/AsideNavbar";
+import { AsideNavbar } from "../components/Post/AsideNavbar";
 import { RightAside } from "../components/Post/RightAside";
 import TagTopics from "../components/Post/Tagtopics";
 import navs from "../data/navs-links.json";
@@ -46,7 +46,7 @@ export default function PostDetail({}) {
     .then((response) => {
       const postData = response.data.data.post;
       const tags = postData.hashtags;
-      const arrTags = tags.split(",");
+      const arrTags = tags;
 
       setTitle(postData.title);
       setDescription(postData.description);
@@ -65,7 +65,7 @@ export default function PostDetail({}) {
         <div className="container post__detail">
           <div className="row mt-5">
             <div className="col-md-1 col-lg-1 d-none d-md-flex justify-content-center post-aside-left mt-5">
-              <SideNavBar navs={navs} />
+              <AsideNavbar navs={navs} />
             </div>
             <div className="col-md-11 col-lg-8">
               {/* <Post post={post} /> */}
