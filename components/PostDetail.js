@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { SideNavBar } from "./Post/AsideNavbar";
+import { AsideNavbar } from "./Post/AsideNavbar";
 import { Post } from "./Post/Post";
 import { RightAside } from "./Post/RightAside";
 import navs from '../data/navs-links.json'
@@ -26,7 +26,7 @@ export default function Detail({ post }) {
       <div className="container post__detail">
         <div className="row mt-5">
           <div className="col-md-1 col-lg-1 d-none d-md-flex justify-content-center post-aside-left mt-5">
-            <SideNavBar navs={navs} />
+            <AsideNavbar navs={navs} />
           </div>
           <div className="col-md-11 col-lg-8">
             {/* <Post post={post} /> */}
