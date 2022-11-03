@@ -6,7 +6,7 @@ export const SideNavBar = ({ navs }) => {
       {
           navs.map((nav) => {
             return (
-              <li className='nav-item text-center'>
+              <li key={nav.icon} className='nav-item text-center'>
                 <a className='nav-link nav-icons nav-icons--like '>
                   <span className='wrapper-icon texv2t-center'>
                     <img src={nav.icon} alt='' />

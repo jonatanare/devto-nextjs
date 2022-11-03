@@ -1,29 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import jwt_decode from 'jwt-decode'
+const axios = require('axios');
 
-export default function enter() {
+
+export default function Enter() {
+  const router = useRouter()
+  const [isLoged, setIsLogged] = useState(false)
+  const { register, formState: { errors }, handleSubmit } = useForm();
+  const URL = 'http://localhost:8080/';
+
+  const onSubmit = ({email, password}) => {
+    axios.post(`${URL}auth/login`, {
+      email: email,
+      password: password
+    })
+    .then((response) => {
+      const token = response.data.token
+      let tokenDecoded = jwt_decode(token)
+      localStorage.setItem('token', JSON.stringify(tokenDecoded))
+      const returnUrl = router.query.returnUrl || '/'
+      router.push(returnUrl)
+
+    })
+    .catch((error) => console.log(error))
+  }
+
   return (
     <>
       <Layout>
-      <main class="container-fluid main mx-auto login mb-5" id="login">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-6 offset-md-3">
-              <article class="card">
+      <main className="container-fluid main mx-auto login mb-5" id="login">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-6 offset-md-3">
+              <article className="card">
                 <div>
-                  <div class="mx-auto text-center mb-4">
-                    <h2 class="d-block mt-5 mx-auto login__title">
+                  <div className="mx-auto text-center mb-4">
+                    <h2 className="d-block mt-5 mx-auto login__title">
                       Welcome to DEV Community 👩‍💻👨‍💻
                     </h2>
-                    <p class="login__text mb-4">
+                    <p className="login__text mb-4">
                       {" "}
-                      <a href="#" class="text-decoration-none me-1">
+                      <a href="#" className="text-decoration-none me-1">
                         DEV Community
                       </a>
                       👩‍💻👨‍💻 is a community of 923,820 amazing developers
                     </p>
                   </div>
-                  <button class="btn__apps btn__apps--apple mb-2">
+                  <button className="btn__apps btn__apps--apple mb-2">
                     {" "}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +59,7 @@ export default function enter() {
                       role="img"
                       aria-labelledby="a8wi7o4syaayc8h31k12ki3xi46fsupr"
                       aria-hidden="true"
-                      class="btn__icon mx-auto"
+                      className="btn__icon mx-auto"
                     >
                       <title id="a8wi7o4syaayc8h31k12ki3xi46fsupr">apple</title>
                       <path d="M11.752 6.657c.828 0 1.867-.56 2.486-1.307.56-.677.969-1.623.969-2.568 0-.129-.012-.257-.036-.362-.922.035-2.03.618-2.696 1.4-.525.596-1.004 1.53-1.004 2.487 0 .14.024.28.035.326.059.012.152.024.245.024zM8.834 20.78c1.132 0 1.634-.759 3.046-.759 1.436 0 1.75.736 3.011.736 1.238 0 2.066-1.144 2.848-2.265.876-1.284 1.238-2.544 1.261-2.603-.082-.023-2.451-.992-2.451-3.711 0-2.358 1.867-3.42 1.972-3.502-1.237-1.774-3.116-1.82-3.63-1.82-1.389 0-2.52.84-3.233.84-.77 0-1.786-.794-2.988-.794-2.288 0-4.61 1.89-4.61 5.462 0 2.218.863 4.564 1.925 6.082.91 1.284 1.705 2.334 2.849 2.334z"></path>
@@ -41,7 +67,7 @@ export default function enter() {
                     Continue with Apple
                   </button>
 
-                  <button class="btn__apps btn__apps--forem mb-2">
+                  <button className="btn__apps btn__apps--forem mb-2">
                     {" "}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +79,7 @@ export default function enter() {
                       role="img"
                       aria-labelledby="acikop4z6bxqjlto2n332en8imfpu6s2"
                       aria-hidden="true"
-                      class="btn__icon btn__icon--forem"
+                      className="btn__icon btn__icon--forem"
                     >
                       <title id="acikop4z6bxqjlto2n332en8imfpu6s2">forem</title>
                       <g
@@ -67,7 +93,7 @@ export default function enter() {
                     Continue with Forem
                   </button>
 
-                  <button class="btn__apps btn__apps--github mb-2">
+                  <button className="btn__apps btn__apps--github mb-2">
                     {" "}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +103,7 @@ export default function enter() {
                       role="img"
                       aria-labelledby="af9nsbngwqd6u6dcb32vq6haokfuvc1n"
                       aria-hidden="true"
-                      class="btn__icon"
+                      className="btn__icon"
                     >
                       <title id="af9nsbngwqd6u6dcb32vq6haokfuvc1n">
                         github
@@ -87,7 +113,7 @@ export default function enter() {
                     Continue with GitHub
                   </button>
 
-                  <button class="btn__apps btn__apps--twitter mb-4">
+                  <button className="btn__apps btn__apps--twitter mb-4">
                     {" "}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +123,7 @@ export default function enter() {
                       role="img"
                       aria-labelledby="arudri4npkqq8oui6d2wjn3pmvnhfmid"
                       aria-hidden="true"
-                      class="btn__icon"
+                      className="btn__icon"
                     >
                       <title id="arudri4npkqq8oui6d2wjn3pmvnhfmid">
                         twitter
@@ -110,60 +136,60 @@ export default function enter() {
                     Continue with Twitter
                   </button>
 
-                  <div class="text-center mb-4">
-                    <span class="login__anounce">
+                  <div className="text-center mb-4">
+                    <span className="login__anounce">
                       Have a password? Continue with your email address
                     </span>
                   </div>
                 </div>
-                <form class="login__form mx-auto">
-                  <div class="form-group mb-3">
-                    <label for="exampleInputEmail1" class="mb-2 login__email">
+                <form onSubmit={handleSubmit(onSubmit)} className="login__form mx-auto">
+                  <div className="form-group mb-3">
+                    <label htmlFor="exampleInputEmail1" className="mb-2 login__email">
                       Email
                     </label>
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
-                      value="movebike@gmail.com"
+                      {...register("email", { required: true})}
                     />
                   </div>
-                  <div class="form-group mb-3">
+                  <div className="form-group mb-3">
                     <label
-                      for="exampleInputPassword1"
-                      class="mb-2 login__email"
+                      htmlFor="exampleInputPassword1"
+                      className="mb-2 login__email"
                     >
                       Password
                     </label>
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputPassword1"
                       placeholder="Password"
-                      value="movebike"
+                      {...register("password", { required: true})}
                     />
                   </div>
-                  <div class="form-check mb-3">
+                  <div className="form-check mb-3">
                     <input
                       type="checkbox"
-                      class="form-check-input"
+                      className="form-check-input"
                       id="exampleCheck1"
                     />
-                    <label class="form-check-label" for="exampleCheck1">
+                    <label className="form-check-label" htmlFor="exampleCheck1">
                       Remember me
                     </label>
                   </div>
                   <button
                     type="submit"
-                    class="btn btn-primary btn__continue w-100"
+                    className="btn btn-primary btn__continue w-100"
                     id="btn-continue"
                   >
                     Continue
                   </button>
                 </form>
-                <a href="#" class="text-decoration-none text-center mt-4 mb-3">
+                <a href="#" className="text-decoration-none text-center mt-4 mb-3">
                   I forgot my password
                 </a>
               </article>

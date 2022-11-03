@@ -23,10 +23,10 @@ export const RightAside = () => {
         <a className='text-decoration-none  listing__card' href='#'>
           <div className='p-3 nav-tabs'>
             <p className='listing__text mb-1 listing__card'>{title}</p>
-            <ul classNameName='d-flex flex-wrap'>
+            <ul className='d-flex flex-wrap'>
               {tags.map((tag) => {
                 return (
-                  <li className='listing__figcaption d-flex justify-content-center ms-3'>{tag}</li>
+                  <li key={tag} className='listing__figcaption d-flex justify-content-center ms-3'>{tag}</li>
                 )
               })}
             </ul>
@@ -67,7 +67,7 @@ export const RightAside = () => {
           </li>
           <li>
             <label className='card__hover--key'>Joined</label>
-            <label className='card__hover--value'><time datetime='2022-03-13T08:00:39Z' className='date'>March 13, 2022</time></label>
+            <label className='card__hover--value'><time dateTime='2022-03-13T08:00:39Z' className='date'>March 13, 2022</time></label>
           </li>
         </ul>
       </div>
@@ -77,10 +77,9 @@ export const RightAside = () => {
         </div>
         {data.map((card) => {
           return (
-            <ul className='d-flex justify-content-between ps-0 pt-1 mb-0 pe-1'>
+            <ul key={card.title} className='d-flex justify-content-between ps-0 pt-1 mb-0 pe-1'>
 
               <RightAsideCard
-                key={card.title}
                 title={card.title}
                 tags={card.tags}
               />

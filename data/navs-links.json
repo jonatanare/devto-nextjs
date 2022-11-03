@@ -1,0 +1,17 @@
+[
+    {
+      "icon": "/assets/icons/heart.svg",
+      "amount": 18
+    },
+    {
+      "icon": "/assets/icons/speaker.svg",
+      "amount": 23
+    },
+    {
+      "icon": "/assets/icons/save.svg",
+      "amount": 32
+    },
+    {
+      "icon": "/assets/icons/dots.svg"
+    }
+  ]
