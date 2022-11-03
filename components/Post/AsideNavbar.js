@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const SideNavBar = ({ navs }) => {
+export const AsideNavbar = ({ navs }) => {
   return (
     <ul className='navbar-nav'>
       {

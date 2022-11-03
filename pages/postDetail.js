@@ -46,7 +46,7 @@ export default function PostDetail({}) {
     .then((response) => {
       const postData = response.data.data.post;
       const tags = postData.hashtags;
-      const arrTags = tags.split(",");
+      const arrTags = tags;
 
       setTitle(postData.title);
       setDescription(postData.description);

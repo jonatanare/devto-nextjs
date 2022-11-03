@@ -6,7 +6,7 @@ export default function HomePosts({ author, createdAt, title, tags, idPost }) {
   const router = useRouter()
 
   useEffect(() => {
-    let newTags = tags.split(',')
+    let newTags = tags
     setTag(newTags)
     
   }, [])
@@ -35,7 +35,7 @@ export default function HomePosts({ author, createdAt, title, tags, idPost }) {
             </a>
             <div className="article d-flex">
                 {
-                 tag.map((index) => <TagTopic key={index} tag={index} />)
+                   tags.map((index) => <TagTopic key={index} tag={index} />)
                 }
             </div>
           </div>
