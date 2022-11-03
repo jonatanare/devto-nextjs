@@ -1,7 +1,7 @@
 import { TagTopics } from './Tagtopics'
 import React from 'react'
 
-export const Post = ({ post }) => {
+export const Post = ({ author, createdAt, title, tags, description }) => {
   return (
     <>
       <article className='post article-single card mb-5'>
@@ -12,17 +12,17 @@ export const Post = ({ post }) => {
               <img className='article__autor rounded-circle' src='/assets/home/avatar-home.webp' alt='' />
             </div>
             <div className=' ms-2 '>
-              <p className=' btn article__down name mb-0 p-1'>{post.author}</p>
-              <label className='date d-block ms-1'>{post.createdAt}</label>
+              <p className=' btn article__down name mb-0 p-1'>{author}</p>
+              <label className='date d-block ms-1'>{createdAt}</label>
             </div>
           </div>
           <div className='identation p-3 ms-3 pt-2 wrapper-tags'>
-            <a className='article__link' href='./post.html?id=@doc_id@'>
-              <h2 className='article__title'>{post.title}
+            <a className='article__link' href=''>
+              <h2 className='article__title'>{title}
               </h2>
             </a>
-            <TagTopics tags={post.tags} />
-            <p className='post__text mt-3'>{post.description}</p>
+            {/* <TagTopics tags={tags} /> */}
+            <p className='post__text mt-3'>{description}</p>
           </div>
         </div>
       </article>
