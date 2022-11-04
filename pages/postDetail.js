@@ -5,9 +5,11 @@ import { RightAside } from "../components/Post/RightAside";
 import TagTopics from "../components/Post/Tagtopics";
 import navs from "../data/navs-links.json";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import jwtDecode from "jwt-decode";
 const axios = require("axios");
 
-export default function PostDetail({}) {
+export default function PostDetail() {
   const router = useRouter();
   const [post, setPost] = useState();
   const [title, setTitle] = useState("");
@@ -16,6 +18,9 @@ export default function PostDetail({}) {
   const [date, setDate] = useState("");
   const [updatedDate, setUpdatedDate] = useState("");
   const [tag, setTag] = useState([]);
+  const [tokenAccess, setTokenAcces] = useState("")
+
+  
 
   let meses = [
     "Jan",
@@ -38,26 +43,56 @@ export default function PostDetail({}) {
     meses[dateUpdated.getMonth()]
   }`;
 
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  
+
   const URL_API = "http://localhost:8080/";
-  const id = router.query['id']
+  const id = router.query["id"];
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setTokenAcces(token)
+  }, [tokenAccess])
+
+  const onSubmit = ({idPost, content}) => {
+    axios.post(`${URL_API}comments`, {
+      comment: content,
+      post_id: idPost
+    }, {
+      headers: {
+        'Authorization': tokenAccess
+      }
+    })
+    .then((response) => {
+      const data = response.data
+      console.log(data);
+    })
+    .catch((error) => console.log(error))
+  }
+
   useEffect(() => {
     axios
-    .get(`${URL_API}posts/${id}`)
-    .then((response) => {
-      const postData = response.data.data.post;
-      const tags = postData.hashtags;
-      const arrTags = tags;
+      .get(`${URL_API}posts/${id}`)
+      .then((response) => {
+        const postData = response.data.data.post;
+        const tags = postData.hashtags;
+        const arrTags = tags;
 
-      setTitle(postData.title);
-      setDescription(postData.description);
-      setCover(postData.image);
-      setDate(postData.createdAt);
-      setUpdatedDate(postData.updatedAt);
-      setTag(arrTags);
-      //setPost(postData);
-    })
-    .catch((error) => console.log(error));
-  }, [id])
+        setTitle(postData.title);
+        setDescription(postData.description);
+        setCover(postData.image);
+        setDate(postData.createdAt);
+        setUpdatedDate(postData.updatedAt);
+        setTag(arrTags);
+        //setPost(postData);
+      })
+      .catch((error) => console.log(error));
+  }, [id]);
 
   return (
     <>
@@ -104,6 +139,25 @@ export default function PostDetail({}) {
                     <p className="post__text mt-3">{description}</p>
                   </div>
                 </div>
+                <hr />
+                <form onSubmit={handleSubmit(onSubmit)} className="p-2">
+                  <h3 className="ms-5">Top comments</h3>
+                  <input type="hidden" value={`${id}`}  {...register("idPost")} />
+                  <div className="form-floating pe-5 ps-5">
+                    <textarea
+                      className="form-control"
+                      placeholder="Leave a comment here"
+                      id="floatingTextarea2"
+                      style={{ height: "100px" }}
+                      {...register("content", {required: true})}
+                    ></textarea>
+                    <label htmlFor="floatingTextarea2" className="ms-5 pt-3">Comments</label>
+                  </div>
+                  <div className="d-flex pe-5 ps-5 pt-3">
+                    <button className="btn btn-primary btn-publish">Submit</button>
+                    <button className="btn btn-secondary ms-2">Preview</button>
+                  </div>
+                </form>
               </article>
             </div>
             <aside className="aside d-none d-lg-block col-lg-3 p-0">

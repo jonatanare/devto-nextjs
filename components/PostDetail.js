@@ -19,6 +19,9 @@ export default function Detail({ post }) {
         console.log(postData);
       })
       .catch((error) => console.log(error))
+      .finally(() => {
+        console.log("Finish");
+      })
 
   }, [])
   return (
