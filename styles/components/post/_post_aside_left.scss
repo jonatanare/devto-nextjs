@@ -19,6 +19,13 @@
                     fill: rgb(220, 38, 38);;
                 }
             }
+        }&--like_active{
+            background-color: rgba(220, 38, 38, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            svg{
+                fill: rgb(220, 38, 38);;
+            }
         }
 
         &--unicorn{

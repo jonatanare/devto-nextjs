@@ -1,17 +1,21 @@
 [
     {
+      "id": "heart",
       "icon": "/assets/icons/heart.svg",
       "amount": 18
     },
     {
+      "id": "speaker",
       "icon": "/assets/icons/speaker.svg",
       "amount": 23
     },
     {
+      "id": "save",
       "icon": "/assets/icons/save.svg",
       "amount": 32
     },
     {
+      "id": "dots",
       "icon": "/assets/icons/dots.svg"
     }
   ]
