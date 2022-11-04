@@ -21,6 +21,7 @@ export default function PostDetail() {
   const [tokenAccess, setTokenAcces] = useState("")
 
   
+  const [reactionsCount, setReactionsCount] = useState([]);
 
   let meses = [
     "Jan",
@@ -83,16 +84,18 @@ export default function PostDetail() {
         const tags = postData.hashtags;
         const arrTags = tags;
 
-        setTitle(postData.title);
-        setDescription(postData.description);
-        setCover(postData.image);
-        setDate(postData.createdAt);
-        setUpdatedDate(postData.updatedAt);
-        setTag(arrTags);
-        //setPost(postData);
-      })
-      .catch((error) => console.log(error));
-  }, [id]);
+      setTitle(postData.title);
+      setDescription(postData.description);
+      setCover(postData.image);
+      setDate(postData.createdAt);
+      setUpdatedDate(postData.updatedAt);
+      setTag(arrTags);
+      setReactionsCount(postData.reactions);
+      console.log(postData)
+      //setPost(postData);
+    })
+    .catch((error) => console.log(error));
+  }, [id])
 
   return (
     <>
@@ -100,7 +103,7 @@ export default function PostDetail() {
         <div className="container post__detail">
           <div className="row mt-5">
             <div className="col-md-1 col-lg-1 d-none d-md-flex justify-content-center post-aside-left mt-5">
-              <AsideNavbar navs={navs} />
+              <AsideNavbar navs={navs} reactionsCount={reactionsCount} id={id} />
             </div>
             <div className="col-md-11 col-lg-8">
               {/* <Post post={post} /> */}
