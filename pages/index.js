@@ -14,7 +14,6 @@ export default function Home() {
     .then(function (response) {
       const posts = response.data.data.posts
       setPosts(posts)
-      console.log(posts)  
     })
     .catch((error) => console.log(error))
   }, [])

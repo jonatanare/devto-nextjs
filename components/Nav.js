@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 const axios = require("axios");
+import jwt_decode from 'jwt-decode'
+
 
 export default function Nav() {
   const [isLoged, setIsLogged] = useState(false);
@@ -12,17 +14,20 @@ export default function Nav() {
     if (!token) {
       return;
     }
-    const { id } = JSON.parse(token);
+    const tokenParse = jwt_decode(token)
 
     axios
-      .get(`${URL_API}authors/${id}`)
+      .get(`${URL_API}authors/${tokenParse.id}`)
       .then((response) => {
         const { _id } = response.data.data.author;
-        if (id === _id) {
+        if (tokenParse.id === _id) {
           setIsLogged(true);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => {
+        console.log('Finish');
+      })
   }, []);
   return (
     <>
@@ -81,7 +86,6 @@ export default function Nav() {
               <button className="btn bg-transparent btn-sm d-md-none">
                 <img src="./assets/icons/icon-search.svg" alt="Icon reach" />
               </button>
-
               {isLoged ? (
                 <>
                   <button className="btn btn-outline-primary m-auto" id="">

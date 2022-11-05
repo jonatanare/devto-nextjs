@@ -20,6 +20,9 @@ export default function Detail({ post }) {
         console.log(reactions);
       })
       .catch((error) => console.log(error))
+      .finally(() => {
+        console.log("Finish");
+      })
 
   }, [])
   return (
