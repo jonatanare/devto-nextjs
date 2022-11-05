@@ -19,13 +19,7 @@ export default function Enter() {
     })
     .then((response) => {
       const token = response.data.token
-      let tokenDecoded = jwt_decode(token)
-<<<<<<< HEAD
       localStorage.setItem('token', token)
-=======
-      localStorage.setItem('token', JSON.stringify(tokenDecoded))
-      console.log('id', tokenDecoded);
->>>>>>> develop
       const returnUrl = router.query.returnUrl || '/'
       router.push(returnUrl)
 

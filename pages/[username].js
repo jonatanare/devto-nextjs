@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 
@@ -21,7 +22,7 @@ export default function Username() {
                                 <img src="./assets/home/avatar-home.webp" alt="Icons Avatar"/>
                             </span>
                             <div className="wrapper-avatar__actions ms-auto mt-4">
-                                <a href="/settings.html" className="btn btn-primary btn-profile">Edit profile</a>
+                                <Link href="/settings" className="btn btn-primary btn-profile">Edit profile</Link>
                             </div>
                         </div>
                         <div className="profile__details text-md-center">

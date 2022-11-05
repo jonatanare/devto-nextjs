@@ -9,7 +9,6 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
   const authorFound = reactionsCount.find(author=>author.author == getIdFromLocalStorage())
 
   function getIdFromLocalStorage(){
-    console.log(JSON.parse(localStorage.getItem("token")).id)
     return JSON.parse(localStorage.getItem("token")).id
   }
   function handleClick() {
