@@ -9,7 +9,7 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
   const authorFound = reactionsCount.find(author=>author.author == getIdFromLocalStorage())
 
   function getIdFromLocalStorage(){
-    return JSON.parse(localStorage.getItem("token")).id
+   /*  return JSON.parse(localStorage.getItem("token")).id */
   }
   function handleClick() {
     if(isAdded){
