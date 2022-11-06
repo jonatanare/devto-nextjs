@@ -9,6 +9,9 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
   const [isAdded, setIsAdded] = useState(false);
   const authorFound = reactionsCount.find(author=>author.author == getIdFromLocalStorage())
 
+  function getIdFromLocalStorage(){
+   /*  return JSON.parse(localStorage.getItem("token")).id */
+  }
   function handleClick() {
     if(isAdded){
       return;
