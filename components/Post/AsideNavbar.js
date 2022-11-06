@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode';
 import { getDisplayName } from 'next/dist/shared/lib/utils';
 import {React,useState,useEffect} from 'react'
 const axios = require('axios');
@@ -8,9 +9,6 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
   const [isAdded, setIsAdded] = useState(false);
   const authorFound = reactionsCount.find(author=>author.author == getIdFromLocalStorage())
 
-  function getIdFromLocalStorage(){
-    return JSON.parse(localStorage.getItem("token")).id
-  }
   function handleClick() {
     if(isAdded){
       return;
@@ -27,6 +25,11 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
     .catch((error) => console.log(error))
     
   }
+
+useEffect(() => {
+  const token = localStorage.getItem('token') /* para decodificar */
+  const {id} = jwtDecode(token)
+})
 
   useEffect(() => {
     setState(reactionsCount==null?[]:reactionsCount)
