@@ -1,22 +1,22 @@
 import Layout from "../components/Layout";
 import AsideLeft from "../components/Aside/AsideLeft";
-import HomePosts from '../components/HomePost';
+import HomePosts from "../components/HomePost";
 import React, { useEffect, useState } from "react";
-const axios = require('axios');
-
-
+const axios = require("axios");
 
 export default function Home() {
-  const [posts, setPosts] = useState([])
-  const URL = 'http://localhost:8080/';
+  const [posts, setPosts] = useState([]);
+  const [datePosted, setDatePosted] = useState("");
+  const URL = "http://localhost:8080/";
   useEffect(() => {
-    axios.get(`${URL}posts`)
-    .then(function (response) {
-      const posts = response.data.data.posts
-      setPosts(posts)
-    })
-    .catch((error) => console.log(error))
-  }, [])
+    axios
+      .get(`${URL}posts`)
+      .then(function (response) {
+        const posts = response.data.data.posts;
+        setPosts(posts);
+      })
+      .catch((error) => {});
+  }, []);
   return (
     <>
       <Layout>
@@ -37,22 +37,18 @@ export default function Home() {
                   </a>
                 </div>
 
-                {
-                  posts.map((post) => <HomePosts key={post.title} title={post.title} author={post.title} tags={post.hashtags} idPost={post._id} />)
-                }
-
-                {/* <HomePosts
-                  author="ferchi"
-                  tags={[
-                    "programming",
-                    "productivity",
-                    "design",
-                    "showdev",
-                    "beginners",
-                  ]}
-                  title="ferchi bb"
-                  reactions="2"
-                /> */}
+                {posts
+                  .map((post) => (
+                    <HomePosts
+                      key={post._id}
+                      title={post.title}
+                      author={post.author.name}
+                      tags={post.hashtags}
+                      idPost={post._id}
+                      createdAt={post.createdAt}
+                    />
+                  ))
+                  .reverse()}
               </div>
               <aside className="aside d-md-block col-lg-3 d-md-none d-lg-block">
                 <a className="text-decoration-none" href="#">

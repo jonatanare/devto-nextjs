@@ -27,7 +27,7 @@ export default function Register() {
         const returnUrl = '/enter'
         router.push(returnUrl)
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {});
   };
 
   return (
