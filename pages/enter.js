@@ -25,7 +25,7 @@ export default function Enter() {
       .then((response) => {
         const token = response.data.userCurrent.token;
         const { id, name } = response.data.userCurrent
-        const userCurrent = {'user_id': id, 'user': name}
+        const userCurrent = {'id': id, 'user': name}
         localStorage.setItem("token", token);
         localStorage.setItem("userCurrent", JSON.stringify(userCurrent))
         const returnUrl = router.query.returnUrl || "/";
