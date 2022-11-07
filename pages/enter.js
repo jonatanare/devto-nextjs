@@ -23,8 +23,11 @@ export default function Enter() {
         password: password,
       })
       .then((response) => {
-        const token = response.data.token;
+        const token = response.data.userCurrent.token;
+        const { id, name } = response.data.userCurrent
+        const userCurrent = {'user_id': id, 'user': name}
         localStorage.setItem("token", token);
+        localStorage.setItem("userCurrent", JSON.stringify(userCurrent))
         const returnUrl = router.query.returnUrl || "/";
         router.push(returnUrl);
       })

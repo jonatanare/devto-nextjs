@@ -12,6 +12,9 @@ export default function Nav() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const userCurrent = localStorage.getItem("userCurrent")
+    // const userParse = JSON.parse(userCurrent)
+    console.log(userCurrent);
     if (!token) {
       return;
     }
