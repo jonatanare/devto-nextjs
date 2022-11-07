@@ -6,10 +6,10 @@ const axios = require('axios')
 export const AsideNavbar = ({ navs, reactionsCount, id }) => {
   const [state, setState] = useState([])
   const [isAdded, setIsAdded] = useState(false)
+  const [reactionFound, setReactionFound] = useState({})
 
-  let reactionFound = reactionsCount.find(
-    (reaction) => reaction.author._id == getTokenId()
-  )
+
+  
 
   function getTokenId () {
     const token = localStorage.getItem('token')
@@ -31,7 +31,6 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
       deleteReactionApi()
       return
     }
-    // reactions.push("2");
     addReactionApi()
   }
 
@@ -49,7 +48,7 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
       .then(function (response) {
         const reactiondb = response.data.data.post
         setState([...state, reactiondb])
-        reactionFound = reactiondb
+        setReactionFound(reactiondb)
         setIsAdded(true)
       })
       .catch((error) => {})
@@ -81,9 +80,14 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
 
   useEffect(() => {
     setState(reactionsCount == null ? [] : reactionsCount)
-
-    setIsAdded(reactionFound != null)
+    let rF = reactionsCount.find(
+      (reaction) => reaction.author._id == getTokenId()
+    )
+    setReactionFound(rF)
+    setIsAdded(rF != null)
   }, [reactionsCount])
+
+
   return (
     <ul className='navbar-nav'>
       {navs.map((nav) => {

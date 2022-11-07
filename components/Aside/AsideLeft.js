@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import dynamic from 'next/dynamic'
-
 import linksItems from '../../data/aside-links.json'
 import otherLinks from '../../data/other-links.json'
 import socialLinks from '../../data/social-links.json'
