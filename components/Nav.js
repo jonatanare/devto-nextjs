@@ -1,19 +1,21 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-import jwt_decode from 'jwt-decode'
-const axios = require('axios')
+import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+const axios = require("axios");
+import jwt_decode from "jwt-decode";
 
-export default function Nav () {
-  const [isLoged, setIsLogged] = useState(false)
-  const URL_API = 'http://localhost:8080/'
+export default function Nav() {
+  const router = useRouter()
+  const [isLoged, setIsLogged] = useState(false);
+  const URL_API = "http://localhost:8080/";
 
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (!token) {
       return
     }
-    const tokenParse = jwt_decode(token)
+    const tokenParse = jwt_decode(token);
 
     axios
       .get(`${URL_API}authors/${tokenParse.id}`)
@@ -24,9 +26,13 @@ export default function Nav () {
         }
       })
       .catch((error) => {})
-      .finally(() => {
-      })
-  }, [])
+      .finally(() => {});
+  }, []);
+
+  const signOut = () => {
+    localStorage.removeItem('token');
+    router.reload()
+  }
   return (
     <>
       <header
@@ -84,56 +90,96 @@ export default function Nav () {
               <button className='btn bg-transparent btn-sm d-md-none'>
                 <img src='./assets/icons/icon-search.svg' alt='Icon reach' />
               </button>
-              {isLoged
-                ? (
-                  <>
-                    <button className='btn btn-outline-primary m-auto' id=''>
-                      {' '}
-                      <Link href='/new'>Create Post</Link>
-                    </button>
+              {isLoged ? (
+                <>
+                  <button className="btn btn-outline-primary m-auto" id="">
+                    {" "}
+                    <Link href="/new">Create Post</Link>
+                  </button>
+                  <button
+                    className="btn bg-transparent btn-sm position-relative"
+                    id="btn-notif"
+                  >
+                    <img
+                      src="./assets/icons/icon-notifications.svg"
+                      alt="Icon notification"
+                    />
+                    <span className="position-absolute translate-middle badge bg-danger">
+                      <span className="visually-hidden">unread messages</span>
+                    </span>
+                  </button>
+                  <div className="dropdown">
                     <button
-                      className='btn bg-transparent btn-sm position-relative'
-                      id='btn-notif'
+                      type="button"
+                      className="btn btn-sm p-1 wrapper-avatar c-btn dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                      <img
-                        src='./assets/icons/icon-notifications.svg'
-                        alt='Icon notification'
-                      />
-                      <span className='position-absolute translate-middle badge bg-danger'>
-                        <span className='visually-hidden'>unread messages</span>
-                      </span>
-                    </button>
-                    <a
-                      href='jonatanare.html'
-                      className='btn btn-sm p-1 wrapper-avatar c-btn'
-                      id='btn-avatar'
-                    >
-                      <span className='btn-avatar'>
+                      <span className="btn-avatar">
                         <img
-                          className='img-avatar'
-                          src='./assets/home/avatar-home.webp'
-                          alt='Avatar Session'
+                          className="img-avatar"
+                          src="./assets/home/avatar-home.webp"
+                          alt="Avatar Session"
                         />
                       </span>
-                    </a>
-                  </>
-                  )
-                : (
-                  <>
-                    <button
-                      className='btn btn__login btn-outline-primary m-auto me-1 d-none d-md-flex'
-                      id='btn-login'
-                    >
-                      <Link href='/enter'>Log In</Link>
                     </button>
-                    <button
-                      className='btn btn__account btn-outline-primary m-auto me-1'
-                      id='btn-create'
-                    >
-                      <Link href='/register'> Create Account</Link>
-                    </button>
-                  </>
-                  )}
+                    <ul className="dropdown-menu translate-middle-x">
+                    <li>
+                        <a className="dropdown-item" href="#">
+                          <p className="mb-0 fw-bold">Jonatan Arevalo</p>
+                          <span>@jonatelo09</span>
+                        </a>
+                      </li>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href="#">
+                          Dashboard
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href="#">
+                          Create Post
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href="#">
+                          Reading List
+                        </a>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" href="/settings">
+                          Settings
+                        </Link>
+                      </li>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li>
+                        <button className="btn w-100 text-start" onClick={signOut}>
+                          Sign Out
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <button
+                    className="btn btn__login btn-outline-primary m-auto me-1 d-none d-md-flex"
+                    id="btn-login"
+                  >
+                    <Link href={"/enter"}>Log In</Link>
+                  </button>
+                  <button
+                    className="btn btn__account btn-outline-primary m-auto me-1"
+                    id="btn-create"
+                  >
+                    <Link href="/register"> Create Account</Link>
+                  </button>
+                </>
+              )}
             </div>
           </div>
           <section

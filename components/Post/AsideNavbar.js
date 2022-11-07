@@ -9,7 +9,6 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
   const [reactionFound, setReactionFound] = useState({})
 
 
-  
 
   function getTokenId () {
     const token = localStorage.getItem('token')
