@@ -153,7 +153,7 @@ export default function Register() {
                     className="login__form mx-auto"
                   >
                     <div className="form-group mb-3">
-                      <label className="mb-2" htmlFor="">Nombre completo</label>
+                      <label className="mb-2 login__email" htmlFor="">Nombre completo</label>
                       <input className="form-control" type="text" placeholder="Ingresa tu nombre" {...register("name", {required: true})} />
                     </div>
                     <div className="form-group mb-3">
@@ -173,7 +173,7 @@ export default function Register() {
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label className="mb-2" htmlFor="">Nacionalidad</label>
+                      <label className="mb-2 login__email" htmlFor="">Nacionalidad</label>
                       <input className="form-control" type="text" placeholder="Ingresa tu nacionalidad" {...register("nacionality", {required: true})} />
                     </div>
                     <div className="form-group mb-3">
@@ -206,19 +206,6 @@ export default function Register() {
                         placeholder="Password"
                         {...register("password", { required: true })}
                       />
-                    </div>
-                    <div className="form-check mb-3">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id="exampleCheck1"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="exampleCheck1"
-                      >
-                        Remember me
-                      </label>
                     </div>
                     <button
                       type="submit"

@@ -13,7 +13,6 @@ export default function Home() {
       .get(`${URL}posts`)
       .then(function (response) {
         const posts = response.data.data.posts;
-        console.log(posts);
         setPosts(posts);
       })
       .catch((error) => {});
