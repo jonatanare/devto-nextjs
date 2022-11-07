@@ -1,190 +1,237 @@
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import { useForm } from 'react-hook-form'
+import React, { use, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 
-import Layout from '../components/Layout'
-import jwtDecode from 'jwt-decode'
-const axios = require('axios')
+import Layout from "../components/Layout";
+const axios = require("axios");
 
-export default function Settings () {
-  const router = useRouter()
-  const [tokenAccess, setTokenAcces] = useState('')
-  const [isLoged, setIsLogged] = useState(false)
+export default function Settings() {
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [biography, setBiography] = useState("");
+  const [email, setEmail] = useState("");
+  const [nacionality, setNacionality] = useState("");
+  const [username, setUsername] = useState("");
+  const [userid, setUserId] = useState("");
+  const [token,setToken] = useState('')
   const {
     register,
     formState: { errors },
-    handleSubmit
-  } = useForm()
-  const URL = 'http://localhost:8080/'
-  const returnUrl = router.query.returnUrl || '/'
+    handleSubmit,
+  } = useForm();
+  const URL = "http://localhost:8080/";
+  const returnUrl = router.query.returnUrl || "/";
+  //const token = localStorage.getItem('token')
+
+  const onSubmit = (data) => {
+    axios.patch(`${URL}authors/${userid}`, {
+      biography,
+      email,
+      nacionality,
+      name,
+      username,
+    },{
+      headers: {
+        Authorization: token
+      }
+    })
+    .then((response) => {
+      router.reload()
+    })
+    .catch((error) => {})
+  };
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (!token) {
-      router.push(returnUrl)
-      return
+    const userLocal = localStorage.getItem("userCurrent");
+    if (!userLocal) {
+      router.push(returnUrl);
+      return;
     }
-    const tokenParse = jwtDecode(token)
-    setTokenAcces(token)
+    const token = localStorage.getItem('token')
+    const { id } = JSON.parse(userLocal);
+    setUserId(id);
+    setToken(token)
+    
     axios
-      .get(`${URL}authors/${tokenParse.id}`)
+      .get(`${URL}authors/${id}`)
       .then((response) => {
-        const { _id } = response.data.data.author
-        if (tokenParse.id === _id) {
-          setIsLogged(true)
-        }
+        const { biography, email, nacionality, name, username } =
+          response.data.data.author;
+        setNacionality(nacionality);
+        setBiography(biography);
+        setEmail(email);
+        setName(name);
+        setUsername(username);
       })
       .catch((error) => {})
-      .finally(() => {
-      })
-  }, [tokenAccess])
+      .finally(() => {});
+  }, []);
 
   return (
-    <Layout>
-      <main id='main'>
-        <div className='container p-1 p-lg-2'>
-          <div className='row g-4'>
-            <aside className='asideleft d-none d-md-block col-md-4'>
-              {/* <div className="card p-3 asideleft__card">
-                <h3 className="asideleft__title">
-                  <a className="text-primary text-decoration-none" href="#">
-                    DEV Community
-                  </a>{" "}
-                  is a community of 883,369 amazing developers
-                </h3>
-                <p className="light asideleft__text pt-3">
-                  Were a place where coders share, stay up-to-date and grow
-                  their careers.
-                </p>
-                <button className="mt-2 btn btn-outline-primary asideleft__btn">
-                  Create acount
-                </button>
-                <button className="btn bg-white mt-2">Log in</button>
-              </div> */}
-
-              <ul className='navbar-nav mb- mx-0'>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    <span>
-                      <img src='./assets/icons/icon-profile.svg' alt='Icon' />
-                    </span>{' '}
-                    Profile
-                  </a>
-                </li>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    <span>
-                      <img src='./assets/icons/setting.svg' alt='Icon' />
-                    </span>{' '}
-                    Customization
-                  </a>
-                </li>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    <span>
-                      <img src='./assets/icons/notifications.svg' alt='Icon' />
-                    </span>
-                    Notifications
-                  </a>
-                </li>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    <span>
-                      <img src='./assets/icons/acount.svg' alt='Icon' />
-                    </span>
-                    Account
-                  </a>
-                </li>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    <span>
-                      <img src='./assets/icons/billing.svg' alt='Icon' />
-                    </span>
-                    Billing
-                  </a>
-                </li>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    <span>
-                      <img src='./assets/icons/icon-tags.svg' alt='Icon' />
-                    </span>
-                    Tags
-                  </a>
-                </li>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    <span>
-                      <img
-                        src='./assets/icons/icon-organitation.svg'
-                        alt='Icon'
+    <>
+    {
+      token
+      ? (<Layout>
+        <main id="main">
+          <div className="container p-1 p-lg-2">
+            <div className="row g-4">
+              <aside className="asideleft d-none d-md-block col-md-4">
+                <ul className="navbar-nav mb- mx-0">
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      <span>
+                        <img src="./assets/icons/icon-profile.svg" alt="Icon" />
+                      </span>{" "}
+                      Profile
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      <span>
+                        <img src="./assets/icons/setting.svg" alt="Icon" />
+                      </span>{" "}
+                      Customization
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      <span>
+                        <img src="./assets/icons/notifications.svg" alt="Icon" />
+                      </span>
+                      Notifications
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      <span>
+                        <img src="./assets/icons/acount.svg" alt="Icon" />
+                      </span>
+                      Account
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      <span>
+                        <img src="./assets/icons/billing.svg" alt="Icon" />
+                      </span>
+                      Billing
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      <span>
+                        <img src="./assets/icons/icon-tags.svg" alt="Icon" />
+                      </span>
+                      Tags
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      <span>
+                        <img
+                          src="./assets/icons/icon-organitation.svg"
+                          alt="Icon"
+                        />
+                      </span>
+                      Organization
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#">
+                      <span>
+                        <img src="./assets/icons/icon-extension.svg" alt="Icon" />
+                      </span>
+                      Extensions
+                    </a>
+                  </li>
+                </ul>
+              </aside>
+              <div className="col-12 col-md-8 col-lg-6">
+                <form className="" onSubmit={handleSubmit(onSubmit)}>
+                  <div className="card p-3">
+                    <div className="mb-3">
+                      <label className="form-label" htmlFor="">
+                        Nombre Completo
+                      </label>
+                      <input
+                        type="text"
+                        value={`${name}`}
+                        className="form-control"
+                        {...register("name", {
+                          onChange: (e) => {
+                            setName(e.target.value);
+                          },
+                        })}
                       />
-                    </span>
-                    Organization
-                  </a>
-                </li>
-                <li className='nav-item'>
-                  <a className='nav-link' href='#'>
-                    <span>
-                      <img src='./assets/icons/icon-extension.svg' alt='Icon' />
-                    </span>
-                    Extensions
-                  </a>
-                </li>
-              </ul>
-            </aside>
-            <div className='col-12 col-md-9 col-lg-6'>
-              <form className=''>
-                <div className='card p-3'>
-                  <div className='mb-3'>
-                    <label className='form-label' htmlFor=''>
-                      Nombre Completo
-                    </label>
-                    <input
-                      type='text'
-                      className='form-control'
-                      {...register('name')}
-                    />
+                    </div>
+                    <div className="mb-3">
+                      <label className="form-label">Email</label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        value={`${email}`}
+                        {...register("email", {
+                          onChange: (e) => {
+                            setEmail(e.target.value);
+                          },
+                        })}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label className="form-label">Username</label>
+                      <input
+                        type="text"
+                        value={`${username}`}
+                        className="form-control"
+                        {...register("username", {
+                          onChange: (e) => {
+                            setUsername(e.target.value);
+                          },
+                        })}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label className="form-label">Nacionalidad</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={`${nacionality}`}
+                        {...register("nacionalidad", {
+                          onChange: (e) => {
+                            setNacionality(e.target.value);
+                          },
+                        })}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label className="form-label">Biografia</label>
+                      <textarea
+                        className="form-control"
+                        defaultValue={biography}
+                        {...register('biography',{
+                          onChange: (e) => {
+                            setBiography(e.target.value)
+                          }
+                        })}
+                      ></textarea>
+                    </div>
                   </div>
-                  <div className='mb-3'>
-                    <label className='form-label'>Email</label>
-                    <input
-                      type='email'
-                      className='form-control'
-                      {...register('email')}
-                    />
+                  <div className="card p-3 mt-4">
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-publish mt-3 w-100"
+                    >
+                      Save Profile Information
+                    </button>
                   </div>
-                  <div className='mb-3'>
-                    <label className='form-label'>Username</label>
-                    <input
-                      type='text'
-                      className='form-control'
-                      {...register('username')}
-                    />
-                  </div>
-                  <div className='mb-3'>
-                    <label className='form-label'>Nacionalidad</label>
-                    <input
-                      type='text'
-                      className='form-control'
-                      {...register('nacionalidad')}
-                    />
-                  </div>
-                  <div className='mb-3'>
-                    <label className='form-label'>Biografia</label>
-                    <textarea
-                      className='form-control'
-                      {...register('biografia')}
-                    />
-                  </div>
-                </div>
-                <div className='card p-3 mt-4'>
-                  <button type='submit' className='btn btn-primary btn-publish mt-3 w-100'>Save Profile Information</button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-      </main>
-    </Layout>
-  )
+        </main>
+      </Layout>)
+      : null
+    }
+    </>
+  );
 }

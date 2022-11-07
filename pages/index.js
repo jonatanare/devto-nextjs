@@ -12,9 +12,8 @@ export default function Home () {
     axios
       .get(`${URL}posts`)
       .then(function (response) {
-        const posts = response.data.data.posts
-        console.log(posts)
-        setPosts(posts)
+        const posts = response.data.data.posts;
+        setPosts(posts);
       })
       .catch((error) => {})
   }, [])

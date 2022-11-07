@@ -10,8 +10,8 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
 
   function getTokenId () {
     const userCurrent = localStorage.getItem('userCurrent')
-    const userCurrentParse = JSON.parse(userCurrent)
-    return userCurrentParse.id
+    const id = JSON.parse(userCurrent)
+    return id
   }
   function getTokenFromLocalStorage () {
     return localStorage.getItem('token')

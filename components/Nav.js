@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import jwt_decode from 'jwt-decode'
 const axios = require('axios')
 
 export default function Nav () {
@@ -11,17 +10,19 @@ export default function Nav () {
   const URL_API = 'http://localhost:8080/'
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token");
+    
     if (!token) {
       return
     }
-    const tokenParse = jwt_decode(token)
+    const userCurrent = localStorage.getItem("userCurrent")
+   const {id} = JSON.parse(userCurrent)
 
     axios
-      .get(`${URL_API}authors/${tokenParse.id}`)
+      .get(`${URL_API}authors/${id}`)
       .then((response) => {
         const { _id } = response.data.data.author
-        if (tokenParse.id === _id) {
+        if (id === _id) {
           setIsLogged(true)
         }
       })
@@ -32,6 +33,7 @@ export default function Nav () {
   const signOut = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('userCurrent')
+    localStorage.clear();
     router.reload()
   }
   return (
