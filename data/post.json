@@ -1,0 +1,9 @@
+[
+    {
+        "author": "cin",
+        "createdAt": "date.format(new Date(), 'MMM, DD')",
+        "title" : "título cool",
+        "tags": ["productivity", "design"],
+        "description": "descripción chila"
+      }
+]
