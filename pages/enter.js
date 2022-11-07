@@ -226,5 +226,5 @@ export default function Enter() {
         </main>
       </Layout>
     </>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
-export default function TagLinks({tag,link}) {
+export default function TagLinks ({ tag, link }) {
   return (
-    <li className="nav-item">
-      <a className="nav-link" href={link}>
+    <li className='nav-item'>
+      <a className='nav-link' href={link}>
         {tag}
       </a>
     </li>
-  );
+  )
 }
