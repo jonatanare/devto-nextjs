@@ -1,45 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
-const axios = require("axios");
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { useForm } from 'react-hook-form'
 
-import Layout from "../components/Layout";
-import jwtDecode from "jwt-decode";
+import Layout from '../components/Layout'
+import jwtDecode from 'jwt-decode'
+const axios = require('axios')
 
-export default function Settings() {
-  const router = useRouter();
-  const [tokenAccess, setTokenAcces] = useState("");
-  const [isLoged, setIsLogged] = useState(false);
+export default function Settings () {
+  const router = useRouter()
+  const [tokenAccess, setTokenAcces] = useState('')
+  const [isLoged, setIsLogged] = useState(false)
   const {
     register,
     formState: { errors },
-    handleSubmit,
-  } = useForm();
-  const URL = "http://localhost:8080/";
+    handleSubmit
+  } = useForm()
+  const URL = 'http://localhost:8080/'
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token')
     const tokenParse = jwtDecode(token)
-    setTokenAcces(token);
+    setTokenAcces(token)
     axios
       .get(`${URL}authors/${tokenParse.id}`)
       .then((response) => {
-        const { _id } = response.data.data.author;
+        const { _id } = response.data.data.author
         if (tokenParse.id === _id) {
-          setIsLogged(true);
+          setIsLogged(true)
         }
       })
       .catch((error) => {})
       .finally(() => {
       })
-  }, [tokenAccess]);
+  }, [tokenAccess])
 
   return (
     <Layout>
-      <main id="main">
-        <div className="container p-1 p-lg-2">
-          <div className="row g-4">
-            <aside className="asideleft d-none d-md-block col-md-4">
+      <main id='main'>
+        <div className='container p-1 p-lg-2'>
+          <div className='row g-4'>
+            <aside className='asideleft d-none d-md-block col-md-4'>
               {/* <div className="card p-3 asideleft__card">
                 <h3 className="asideleft__title">
                   <a className="text-primary text-decoration-none" href="#">
@@ -57,123 +57,123 @@ export default function Settings() {
                 <button className="btn bg-white mt-2">Log in</button>
               </div> */}
 
-              <ul className="navbar-nav mb- mx-0">
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+              <ul className='navbar-nav mb- mx-0'>
+                <li className='nav-item'>
+                  <a className='nav-link' href='#'>
                     <span>
-                      <img src="./assets/icons/icon-profile.svg" alt="Icon" />
-                    </span>{" "}
+                      <img src='./assets/icons/icon-profile.svg' alt='Icon' />
+                    </span>{' '}
                     Profile
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className='nav-item'>
+                  <a className='nav-link' href='#'>
                     <span>
-                      <img src="./assets/icons/setting.svg" alt="Icon" />
-                    </span>{" "}
+                      <img src='./assets/icons/setting.svg' alt='Icon' />
+                    </span>{' '}
                     Customization
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className='nav-item'>
+                  <a className='nav-link' href='#'>
                     <span>
-                      <img src="./assets/icons/notifications.svg" alt="Icon" />
+                      <img src='./assets/icons/notifications.svg' alt='Icon' />
                     </span>
                     Notifications
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className='nav-item'>
+                  <a className='nav-link' href='#'>
                     <span>
-                      <img src="./assets/icons/acount.svg" alt="Icon" />
+                      <img src='./assets/icons/acount.svg' alt='Icon' />
                     </span>
                     Account
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className='nav-item'>
+                  <a className='nav-link' href='#'>
                     <span>
-                      <img src="./assets/icons/billing.svg" alt="Icon" />
+                      <img src='./assets/icons/billing.svg' alt='Icon' />
                     </span>
                     Billing
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className='nav-item'>
+                  <a className='nav-link' href='#'>
                     <span>
-                      <img src="./assets/icons/icon-tags.svg" alt="Icon" />
+                      <img src='./assets/icons/icon-tags.svg' alt='Icon' />
                     </span>
                     Tags
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className='nav-item'>
+                  <a className='nav-link' href='#'>
                     <span>
                       <img
-                        src="./assets/icons/icon-organitation.svg"
-                        alt="Icon"
+                        src='./assets/icons/icon-organitation.svg'
+                        alt='Icon'
                       />
                     </span>
                     Organization
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className='nav-item'>
+                  <a className='nav-link' href='#'>
                     <span>
-                      <img src="./assets/icons/icon-extension.svg" alt="Icon" />
+                      <img src='./assets/icons/icon-extension.svg' alt='Icon' />
                     </span>
                     Extensions
                   </a>
                 </li>
               </ul>
             </aside>
-            <div className="col-12 col-md-9 col-lg-6">
-              <form className="">
-                <div className="card p-3">
-                  <div className="mb-3">
-                    <label className="form-label" htmlFor="">
+            <div className='col-12 col-md-9 col-lg-6'>
+              <form className=''>
+                <div className='card p-3'>
+                  <div className='mb-3'>
+                    <label className='form-label' htmlFor=''>
                       Nombre Completo
                     </label>
                     <input
-                      type="text"
-                      className="form-control"
-                      {...register("name")}
+                      type='text'
+                      className='form-control'
+                      {...register('name')}
                     />
                   </div>
-                  <div className="mb-3">
-                    <label className="form-label">Email</label>
+                  <div className='mb-3'>
+                    <label className='form-label'>Email</label>
                     <input
-                      type="email"
-                      className="form-control"
-                      {...register("email")}
+                      type='email'
+                      className='form-control'
+                      {...register('email')}
                     />
                   </div>
-                  <div className="mb-3">
-                    <label className="form-label">Username</label>
+                  <div className='mb-3'>
+                    <label className='form-label'>Username</label>
                     <input
-                      type="text"
-                      className="form-control"
-                      {...register("username")}
+                      type='text'
+                      className='form-control'
+                      {...register('username')}
                     />
                   </div>
-                  <div className="mb-3">
-                    <label className="form-label">Nacionalidad</label>
+                  <div className='mb-3'>
+                    <label className='form-label'>Nacionalidad</label>
                     <input
-                      type="text"
-                      className="form-control"
-                      {...register("nacionalidad")}
+                      type='text'
+                      className='form-control'
+                      {...register('nacionalidad')}
                     />
                   </div>
-                  <div className="mb-3">
-                    <label className="form-label">Biografia</label>
+                  <div className='mb-3'>
+                    <label className='form-label'>Biografia</label>
                     <textarea
-                      className="form-control"
-                      {...register("biografia")}
-                    ></textarea>
+                      className='form-control'
+                      {...register('biografia')}
+                    />
                   </div>
                 </div>
-                <div className="card p-3 mt-4">
-                    <button type="submit" className="btn btn-primary btn-publish mt-3 w-100">Save Profile Information</button>
+                <div className='card p-3 mt-4'>
+                  <button type='submit' className='btn btn-primary btn-publish mt-3 w-100'>Save Profile Information</button>
                 </div>
               </form>
             </div>
@@ -181,5 +181,5 @@ export default function Settings() {
         </div>
       </main>
     </Layout>
-  );
+  )
 }

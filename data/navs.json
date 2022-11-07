@@ -1,0 +1,25 @@
+[{
+  "icon": "/assets/icons/heart.svg",
+  "amount": 18,
+  "iconAlt": "Icon heart",
+  "iconLink": "/"
+},
+{
+  "icon": "/assets/icons/speaker.svg",
+  "amount": 23,
+  "iconAlt": "Icon speaker",
+  "iconLink": "/"
+},
+{
+  "icon": "/assets/icons/save.svg",
+  "amount": 32,
+  "iconAlt": "Icon save",
+  "iconLink": "/"
+},
+{
+  "icon": "/assets/icons/dots.svg",
+  "amount":"",
+  "iconAlt": "Icon more",
+  "iconLink": "/"
+}
+]

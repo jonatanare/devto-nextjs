@@ -1,25 +1,24 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
-export default function LinkItem({ text, iconLink, imgIcon, imgIconAlt, classN = ''}) {
+export default function LinkItem ({ text, iconLink, imgIcon, imgIconAlt, classN = '' }) {
   return (
     <>
-      <li className="nav-item">
+      <li className='nav-item'>
         <Link className={`nav-link ${classN}`} href={iconLink}>
-          <span className="me-2">
-            <Image 
-              src={`${imgIcon}`} 
-              alt={`${imgIconAlt}`} 
-              layout="fill"
+          <span className='me-2'>
+            <Image
+              src={`${imgIcon}`}
+              alt={`${imgIconAlt}`}
+              layout='fill'
               width={24}
               height={24}
-              //objectFit={"contain"}
-             />
+            />
           </span>
           {text}
         </Link>
       </li>
     </>
-  );
+  )
 }
