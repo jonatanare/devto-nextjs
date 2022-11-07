@@ -6,7 +6,7 @@ const axios = require("axios");
 export default function NewPost() {
   const router = useRouter();
   const URL_API = "http://localhost:8080/";
-  const returnUrl = router.query.returnUrl || '/enter'
+  const returnUrl = router.query.returnUrl || '/'
   const [isLoged, setIsLogged] = useState(false);
 
   useEffect(() => {

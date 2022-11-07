@@ -78,7 +78,7 @@ export default function HomePosts({ author, createdAt, title, tags, idPost }) {
             </div>
           </div>
         </div>
-        <ActionPost />
+        <ActionPost comment={idPost} />
       </article>
     </>
   );
@@ -92,7 +92,7 @@ export const TagTopic = ({ tag }) => {
   );
 };
 
-export const ActionPost = ({ reactions, readTime }) => {
+export const ActionPost = ({ reactions, readTime, comment }) => {
   return (
     <div className="d-flex justify-content-between mb-2">
       <div>
@@ -100,7 +100,7 @@ export const ActionPost = ({ reactions, readTime }) => {
           <img src="/assets/home/heart.svg" alt="Icon " />
           {reactions} Reactions
         </a>
-        <a className="btn article__btn article__btn--action">
+        <a href={`http://localhost:3000/posts?id=${comment}`} className="btn article__btn article__btn--action">
           <img src="/assets/home/comment.svg" alt="" />
           Add Comment
         </a>
