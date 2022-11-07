@@ -30,7 +30,7 @@ export default function AsideLeft() {
             ))
           }
         </ul>
-        <ul className="navbar-nav d-flex flex-row justify-content-between">
+        <ul className="navbar-nav d-flex flex-row justify-content-evenly">
           {
             socialLinks.map((link) => (
               <LinkItem key={link.icon} iconLink={link.iconLink} imgIcon={link.icon} imgIconAlt={link.iconAlt}  />

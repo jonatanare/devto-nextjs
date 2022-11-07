@@ -16,9 +16,14 @@ export default function Settings() {
     handleSubmit,
   } = useForm();
   const URL = "http://localhost:8080/";
+  const returnUrl = router.query.returnUrl || '/'
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    if(!token){
+      router.push(returnUrl);
+      return;
+    }
     const tokenParse = jwtDecode(token)
     setTokenAcces(token);
     axios
