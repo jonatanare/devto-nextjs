@@ -99,8 +99,8 @@ export const ActionPost = ({ reactions, readTime, comment }) => {
           <img src='/assets/home/heart.svg' alt='Icon ' />
           {reactions} Reactions
         </a>
-        <a href={`http://localhost:3000/posts?id=${comment}`} className="btn article__btn article__btn--action">
-          <img src="/assets/home/comment.svg" alt="" />
+        <a href={`http://localhost:3000/posts?id=${comment}`} className='btn article__btn article__btn--action'>
+          <img src='/assets/home/comment.svg' alt='' />
           Add Comment
         </a>
       </div>

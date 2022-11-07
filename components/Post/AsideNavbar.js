@@ -8,14 +8,10 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
   const [isAdded, setIsAdded] = useState(false)
   const [reactionFound, setReactionFound] = useState({})
 
-
-
   function getTokenId () {
-    const token = localStorage.getItem('token')
-    if (token) {
-      return jwt_decode(token).id
-    }
-    return null
+    const userCurrent = localStorage.getItem('userCurrent')
+    const userCurrentParse = JSON.parse(userCurrent)
+    return userCurrentParse.id
   }
   function getTokenFromLocalStorage () {
     return localStorage.getItem('token')
@@ -28,9 +24,9 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
     }
     if (isAdded) {
       deleteReactionApi()
-      return
+    } else {
+      addReactionApi()
     }
-    addReactionApi()
   }
 
   function addReactionApi () {
@@ -55,7 +51,6 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
 
   function deleteReactionApi () {
     const URL_API = 'http://localhost:8080/'
-    console.log(reactionFound)
     axios
       .delete(`${URL_API}reactions/${reactionFound._id}`,
         {
@@ -65,7 +60,6 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
         }
       )
       .then(function (response) {
-        // const reactiondb = response.data.data.post;
         setState(state.filter(reaction => reaction.author._id !== reactionFound.author._id))
         setIsAdded(false)
       })
@@ -73,19 +67,13 @@ export const AsideNavbar = ({ navs, reactionsCount, id }) => {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token') /* para decodificar */
-  // const {id} = jwtDecode(token)
-  })
-
-  useEffect(() => {
     setState(reactionsCount == null ? [] : reactionsCount)
-    let rF = reactionsCount.find(
+    const rF = reactionsCount.find(
       (reaction) => reaction.author._id == getTokenId()
     )
     setReactionFound(rF)
     setIsAdded(rF != null)
   }, [reactionsCount])
-
 
   return (
     <ul className='navbar-nav'>

@@ -13,16 +13,16 @@ export default function Settings () {
   const {
     register,
     formState: { errors },
-    handleSubmit,
-  } = useForm();
-  const URL = "http://localhost:8080/";
+    handleSubmit
+  } = useForm()
+  const URL = 'http://localhost:8080/'
   const returnUrl = router.query.returnUrl || '/'
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if(!token){
-      router.push(returnUrl);
-      return;
+    const token = localStorage.getItem('token')
+    if (!token) {
+      router.push(returnUrl)
+      return
     }
     const tokenParse = jwtDecode(token)
     setTokenAcces(token)
