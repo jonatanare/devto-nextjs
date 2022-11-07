@@ -24,9 +24,8 @@ export default function Nav() {
           setIsLogged(true);
         }
       })
-      .catch((error) => console.log(error))
+      .catch((error) => {})
       .finally(() => {
-        console.log('Finish');
       })
   }, []);
   return (
