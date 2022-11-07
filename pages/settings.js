@@ -24,15 +24,13 @@ export default function Settings() {
     axios
       .get(`${URL}authors/${tokenParse.id}`)
       .then((response) => {
-        console.log(response.data);
         const { _id } = response.data.data.author;
         if (tokenParse.id === _id) {
           setIsLogged(true);
         }
       })
-      .catch((error) => console.log(error))
+      .catch((error) => {})
       .finally(() => {
-        console.log('Finish');
       })
   }, [tokenAccess]);
 

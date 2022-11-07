@@ -24,7 +24,7 @@ export default function Enter() {
       router.push(returnUrl)
 
     })
-    .catch((error) => console.log(error))
+    .catch((error) => {})
   }
 
   return (

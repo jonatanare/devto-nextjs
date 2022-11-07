@@ -3,12 +3,50 @@ import { useRouter } from 'next/router'
 
 export default function HomePosts({ author, createdAt, title, tags, idPost }) {
   const [tag, setTag] = useState([])
+  const [datePosted, setDatePosted] = useState('')
+  const [timeAgo, setTimeAgo] = useState('')
   const router = useRouter()
+
+  let meses = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  useEffect(() => {
+    const date = new Date(createdAt)
+    const day = date.getDate()
+    const month = meses[date.getMonth()]
+    const longAgo = dateDiffInDays(
+      new Date(createdAt),
+      new Date()
+    );
+    let timeAgo = longAgo + " hours ago";
+    let s = "s";
+    if (longAgo >= 24) {
+      timeAgo = Math.floor(longAgo / 24);
+      if (timeAgo == "1") {
+        s = "";
+      }
+      timeAgo = `${timeAgo} day${s} ago`;
+    }
+    setDatePosted(`${month} ${day}`)
+    setTimeAgo(timeAgo)
+  }, [])
 
   useEffect(() => {
     let newTags = tags
     setTag(newTags)
-    
+
   }, [])
   return (
     <>
@@ -25,18 +63,18 @@ export default function HomePosts({ author, createdAt, title, tags, idPost }) {
             <div className="ms-2">
               <p className=" btn article__btn name mb-0 p-1">{author}</p>
               <label className="article__down article__down--date d-block ms-1">
-                {createdAt} ({timeAgo})
+                {datePosted} ({timeAgo})
               </label>
             </div>
           </div>
           <div className="identation p-3 ms-4 pt-2 wrapper-tags">
-            <a className="article__link" href={`${router.basePath}/postDetail?id=${idPost}`}>
+            <a className="article__link" href={`${router.basePath}/posts?id=${idPost}`}>
               <h2 className="article__title ms-1">{title}</h2>
             </a>
             <div className="article d-flex">
-                {
-                   tags.map((index) => <TagTopic key={index} tag={index} />)
-                }
+              {
+                tags.map((index) => <TagTopic key={index} tag={index} />)
+              }
             </div>
           </div>
         </div>
@@ -49,7 +87,7 @@ export default function HomePosts({ author, createdAt, title, tags, idPost }) {
 export const TagTopic = ({ tag }) => {
   return (
     <a className={`btn article__btn article__btn--${tag}`}>
-      <span>{tag}</span>
+      <span>#{tag}</span>
     </a>
   );
 };
@@ -104,27 +142,4 @@ function dateDiffInDays(a, b) {
   );
 
   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
-}
-
-/* 
-  function getRamdomDateInBetween(start, end) {
-    start = Date.parse(start);
-    end = Date.parse(end);
-
-    return new Date(Math.floor(Math.random() * (end - start + 1) + start));
-}
-   */
-export const longAgo = dateDiffInDays(
-  new Date("2022-10-29 18:00:00"),
-  new Date()
-);
-//console.log("tiempooo", longAgo);
-let timeAgo = longAgo + " hours ago";
-let s = "s";
-if (longAgo >= 24) {
-  timeAgo = Math.floor(longAgo / 24);
-  if (timeAgo == "1") {
-    s = "";
-  }
-  timeAgo = `${timeAgo} day${s} ago`;
 }

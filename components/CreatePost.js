@@ -4,50 +4,59 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 const axios = require("axios");
 
-import tools from '../data/tools.json'
+import tools from "../data/tools.json";
 
 const IconTools = ({ toolsComponent }) => {
   return (
     <div className="d-flex tools">
       {toolsComponent.map((tool) => {
-        return <img key={tool.icon} className="crayons-icon me-3" src={tool.icon} alt="" />;
+        return (
+          <img
+            key={tool.icon}
+            className="crayons-icon me-3"
+            src={tool.icon}
+            alt=""
+          />
+        );
       })}
     </div>
   );
 };
 
 export default function CreatePost({}) {
-    const router = useRouter();
-    const {
-      register,
-      formState: { errors },
-      handleSubmit,
-    } = useForm();
-    const URL = "http://localhost:8080/";
-    const token = localStorage.getItem('token')
-    console.log(token);
+  const router = useRouter();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const URL = "http://localhost:8080/";
+  const token = localStorage.getItem("token");
 
-    const onSubmit = ({title, hashtags, description}) => {
-        const arrHashtags = hashtags.split(",")
+  const onSubmit = ({ title, hashtags, description }) => {
+    const arrHashtags = hashtags.split(",");
 
-
-        axios.post(`${URL}posts`, {
-            title: title,
-            hashtags: arrHashtags,
-            description: description
-        },{
-            headers: {
-                'Authorization': token
-            }
-        })
-        .then((response) => {
-            const dataResp = response.data
-            const returnUrl = '/enter'
-            router.push(returnUrl)
-        })
-        .catch((error) => console.log(error))
-
-    }
+    axios
+      .post(
+        `${URL}posts`,
+        {
+          title: title,
+          hashtags: arrHashtags,
+          description: description,
+        },
+        {
+          headers: {
+            'Authorization': token,
+          },
+        }
+      )
+      .then((response) => {
+        const dataResp = response.data;
+        const returnUrl = "/";
+        router.push(returnUrl);
+      })
+      .catch((error) => {});
+  };
   return (
     <section className="container-fluid " id="create-post">
       <form onSubmit={handleSubmit(onSubmit)} className="container crePost">
@@ -76,12 +85,15 @@ export default function CreatePost({}) {
                   id="input-title"
                   aria-describedby="emailHelp"
                   placeholder="New post title here..."
-                  {...register("title", { require: true})}
+                  {...register("title", { require: true })}
                 />
-                <p className="ms-3  mb-4 mt-2 cePost__label">
-                  
-                </p>
-                <input type="text" className="form-control cePost__label" placeholder="Add up to 4 tags... (javascript, nextjs, react)" {...register("hashtags", {required: true})} />
+                <p className="ms-3  mb-4 mt-2 cePost__label"></p>
+                <input
+                  type="text"
+                  className="form-control cePost__label"
+                  placeholder="Add up to 4 tags... (javascript, nextjs, react)"
+                  {...register("hashtags", { required: true })}
+                />
               </div>
             </article>
           </div>
@@ -104,12 +116,16 @@ export default function CreatePost({}) {
               rows="10"
               className="form-control border-0"
               placeholder="Write your post content here"
-              {...register("description", { required: true})}
+              {...register("description", { required: true })}
             ></textarea>
           </div>
         </div>
         <div>
-          <button type="submit" className="btn btn-primary btn-publish mt-3" id="savePost">
+          <button
+            type="submit"
+            className="btn btn-primary btn-publish mt-3"
+            id="savePost"
+          >
             Publish
           </button>
         </div>
