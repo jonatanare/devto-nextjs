@@ -10,18 +10,15 @@ export default function Detail({ post }) {
   const router = useRouter();
   let reactions;
   const {id} = router.query
-  console.log("cintia here");
   const URL_API = 'http://localhost:8080/'
   useEffect(() => {
     axios.get(`${URL_API}posts/${id}`)
       .then((response) => {
         const postData = response.data.data.post
         reactions = postData.reactions;
-        console.log(reactions);
       })
-      .catch((error) => console.log(error))
+      .catch((error) => {})
       .finally(() => {
-        console.log("Finish");
       })
 
   }, [])
