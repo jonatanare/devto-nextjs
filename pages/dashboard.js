@@ -14,11 +14,11 @@ export default function Dashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const { id } = JSON.parse(localStorage.getItem("userCurrent"));
     if (!token) {
       router.push(returnUrl);
       return;
     }
+    const { id } = JSON.parse(localStorage.getItem("userCurrent"));
 
     axios
       .get(`${URL}authors/${id}`)
@@ -150,7 +150,7 @@ export const CardPosts = ({idpost, namePost, likes}) => {
           <Link className="btn btn-secundary" href={`http://localhost:3000/edit?id=${idpost}`}>
             Edit
           </Link>
-          {/* <button type="submit" className="btn" onSubmit={handleDelete(idpost)}>Delete</button> */}
+          <button type="submit" className="btn">Delete</button>
         </div>
         </section>
       </div>
