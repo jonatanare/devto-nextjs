@@ -76,7 +76,7 @@ export default function PostDetail() {
         })
         .catch((error) => {});
     }
-  }, []);
+  }, [isOwner]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
